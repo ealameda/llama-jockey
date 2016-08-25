@@ -8,8 +8,11 @@ public class DynamicObject : MonoBehaviour
     public float movementSpeed;
     public Vector3 minScale;
     public Vector3 maxScale;
-    public float growStartDistance;
+    public float magnetStartDistance;
+    public float magnetStopDistance;
+    public float movementSmoothing;
 
+    private Vector3 objectOrigin;
     private int wayPointIndex;
     private bool reverse = false;
     private bool intersectingObject = false;
@@ -22,6 +25,7 @@ public class DynamicObject : MonoBehaviour
     {
         wayPointIndex = 0;
         anim = transform.GetComponent<Animation>();
+        objectOrigin = transform.position;
     }
 
     void Update ()
@@ -59,13 +63,26 @@ public class DynamicObject : MonoBehaviour
         else if (waypointPositions == null && rightPinchDetector != null)
         {
             float handToObjectDistance = Vector3.Distance(transform.position, rightPinchDetector.transform.position);
-            if (handToObjectDistance < growStartDistance)
+            if (handToObjectDistance < magnetStartDistance && handToObjectDistance > magnetStopDistance)
             {
-                float x = minScale.x + (1 - (handToObjectDistance / growStartDistance)) * (maxScale.x - minScale.x);
-                float y = minScale.y + (1 - (handToObjectDistance / growStartDistance)) * (maxScale.y - minScale.y);
-                float z = minScale.z + (1 - (handToObjectDistance / growStartDistance)) * (maxScale.z - minScale.z);
-                transform.localScale = new Vector3(x, y, z);
+                transform.position = Vector3.Lerp(transform.position, rightPinchDetector.transform.position, Time.deltaTime * movementSmoothing);
             }
+            else if (handToObjectDistance > magnetStartDistance && transform.position != objectOrigin)
+            {
+                transform.position = Vector3.Lerp(transform.position, objectOrigin, Time.deltaTime * movementSmoothing);
+            }
+            else
+            {
+                objectOrigin = transform.position;
+            }
+        }
+        else if (transform.position != objectOrigin)
+        {
+            transform.position = Vector3.Lerp(transform.position, objectOrigin, Time.deltaTime * movementSmoothing);
+        }
+        else
+        {
+            objectOrigin = transform.position;
         }
     }
 
