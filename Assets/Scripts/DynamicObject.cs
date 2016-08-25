@@ -27,7 +27,7 @@ public class DynamicObject : MonoBehaviour
     void Update ()
     {
         // TODO: this will not work for 2 players nicely, we think......
-        Transform rightPinchDetector = GameObject.Find("PinchDetector_R").transform;
+        GameObject rightPinchDetector = GameObject.Find("PinchDetector_R");
         if (waypointPositions != null && waypointPositions.Count > 1 && enableMovement)
         {
             if (Vector3.Distance(transform.position, waypointPositions[wayPointIndex]) < 0.01f)
@@ -58,13 +58,12 @@ public class DynamicObject : MonoBehaviour
         }
         else if (waypointPositions == null && rightPinchDetector != null)
         {
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, rightPinchDetector.position, out hit) && hit.distance < growStartDistance)
+            float handToObjectDistance = Vector3.Distance(transform.position, rightPinchDetector.transform.position);
+            if (handToObjectDistance < growStartDistance)
             {
-                Debug.Log("I'm trying to get bigger");
-                float x = minScale.x + (1 - (hit.distance / growStartDistance)) * (maxScale.x - minScale.x);
-                float y = minScale.y + (1 - (hit.distance / growStartDistance)) * (maxScale.y - minScale.y);
-                float z = minScale.z + (1 - (hit.distance / growStartDistance)) * (maxScale.z - minScale.z);
+                float x = minScale.x + (1 - (handToObjectDistance / growStartDistance)) * (maxScale.x - minScale.x);
+                float y = minScale.y + (1 - (handToObjectDistance / growStartDistance)) * (maxScale.y - minScale.y);
+                float z = minScale.z + (1 - (handToObjectDistance / growStartDistance)) * (maxScale.z - minScale.z);
                 transform.localScale = new Vector3(x, y, z);
             }
         }
