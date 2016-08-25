@@ -1,0 +1,172 @@
+fileFormatVersion: 2
+guid: d7903cb7bd718af499e48bc29fd781d3
+timeCreated: 1442728240
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: cartoon_spaceship01
+    100004: cartoon_spaceship02
+    100006: cartoon_spaceship03
+    100008: cartoon_spaceship04
+    100010: cartoon_spaceship05
+    100012: cartoon_spaceship06
+    100014: cartoon_spaceship07
+    100016: cartoon_spaceship08
+    100018: cartoon_spaceship09
+    100020: cartoon_spaceship10
+    100022: cartoon_spaceship11
+    100024: cartoon_spaceship12
+    100026: cartoon_spaceship13
+    100028: cartoon_spaceship14
+    100030: cartoon_spaceship15
+    100032: cartoon_spaceship16
+    100034: cartoon_spaceship17
+    100036: cartoon_spaceship18
+    100038: cartoon_spaceship19
+    100040: cartoon_spaceship20
+    100042: cartoon_spaceship_firer
+    400000: //RootNode
+    400002: cartoon_spaceship01
+    400004: cartoon_spaceship02
+    400006: cartoon_spaceship03
+    400008: cartoon_spaceship04
+    400010: cartoon_spaceship05
+    400012: cartoon_spaceship06
+    400014: cartoon_spaceship07
+    400016: cartoon_spaceship08
+    400018: cartoon_spaceship09
+    400020: cartoon_spaceship10
+    400022: cartoon_spaceship11
+    400024: cartoon_spaceship12
+    400026: cartoon_spaceship13
+    400028: cartoon_spaceship14
+    400030: cartoon_spaceship15
+    400032: cartoon_spaceship16
+    400034: cartoon_spaceship17
+    400036: cartoon_spaceship18
+    400038: cartoon_spaceship19
+    400040: cartoon_spaceship20
+    400042: cartoon_spaceship_firer
+    2300000: cartoon_spaceship01
+    2300002: cartoon_spaceship02
+    2300004: cartoon_spaceship03
+    2300006: cartoon_spaceship04
+    2300008: cartoon_spaceship05
+    2300010: cartoon_spaceship06
+    2300012: cartoon_spaceship07
+    2300014: cartoon_spaceship08
+    2300016: cartoon_spaceship09
+    2300018: cartoon_spaceship10
+    2300020: cartoon_spaceship11
+    2300022: cartoon_spaceship12
+    2300024: cartoon_spaceship13
+    2300026: cartoon_spaceship14
+    2300028: cartoon_spaceship15
+    2300030: cartoon_spaceship16
+    2300032: cartoon_spaceship17
+    2300034: cartoon_spaceship18
+    2300036: cartoon_spaceship19
+    2300038: cartoon_spaceship20
+    2300040: cartoon_spaceship_firer
+    3300000: cartoon_spaceship01
+    3300002: cartoon_spaceship02
+    3300004: cartoon_spaceship03
+    3300006: cartoon_spaceship04
+    3300008: cartoon_spaceship05
+    3300010: cartoon_spaceship06
+    3300012: cartoon_spaceship07
+    3300014: cartoon_spaceship08
+    3300016: cartoon_spaceship09
+    3300018: cartoon_spaceship10
+    3300020: cartoon_spaceship11
+    3300022: cartoon_spaceship12
+    3300024: cartoon_spaceship13
+    3300026: cartoon_spaceship14
+    3300028: cartoon_spaceship15
+    3300030: cartoon_spaceship16
+    3300032: cartoon_spaceship17
+    3300034: cartoon_spaceship18
+    3300036: cartoon_spaceship19
+    3300038: cartoon_spaceship20
+    3300040: cartoon_spaceship_firer
+    4300000: cartoon_spaceship01
+    4300002: cartoon_spaceship08
+    4300004: cartoon_spaceship07
+    4300006: cartoon_spaceship09
+    4300008: cartoon_spaceship06
+    4300010: cartoon_spaceship13
+    4300012: cartoon_spaceship15
+    4300014: cartoon_spaceship17
+    4300016: cartoon_spaceship11
+    4300018: cartoon_spaceship12
+    4300020: cartoon_spaceship05
+    4300022: cartoon_spaceship02
+    4300024: cartoon_spaceship03
+    4300026: cartoon_spaceship16
+    4300028: cartoon_spaceship20
+    4300030: cartoon_spaceship10
+    4300032: cartoon_spaceship18
+    4300034: cartoon_spaceship19
+    4300036: cartoon_spaceship04
+    4300038: cartoon_spaceship14
+    4300040: cartoon_spaceship_firer
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
