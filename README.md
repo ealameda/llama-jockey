@@ -2,15 +2,15 @@ Baseline functionality for two or more people to collaborate remotely in VR. Try
 
 ##Features include:   
 
-*Lay Wwaypoints to create a path.
+*Lay waypoints to create a path.
   - Pinch to create a waypoint.
-  * Voice chat  
-    - Wear headphones.
-    * Avatar  
-      - Hand tracking using Leap Motion.
-      * Multiplayer networking   
-        - Handled by Photon Unity Networking. See below to set this up before running.
-	* High Five
+* Voice chat  
+  - Wear headphones.
+* Avatar  
+   - Hand tracking using Leap Motion.
+* Multiplayer networking   
+    - Handled by Photon Unity Networking. See below to set this up before running.
+* High Five
 
 	##Hardware requirements:
 	* Oculus or HTC Vive
