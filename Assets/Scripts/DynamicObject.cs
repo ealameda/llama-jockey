@@ -112,7 +112,7 @@ public class DynamicObject : MonoBehaviour
 
     void PauseMovement()
     {
-        enableMovement = !enableMovement;
+        //enableMovement = !enableMovement;
     }
 
     void PlayAnimation()
