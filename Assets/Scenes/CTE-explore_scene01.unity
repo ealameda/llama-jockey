@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.003813911, g: 0.012763048, b: 0.01886615, a: 1}
+  m_IndirectSpecularColor: {r: 0.0038113673, g: 0.01270964, b: 0.018753117, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1221,68 +1221,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4dd277bd9572488489906165e0931952, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1615727133 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 163550, guid: d692895c3470089448f361cfee412c5e, type: 2}
-  m_PrefabInternal: {fileID: 1711631623}
---- !u!111 &1615727134
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1615727133}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
---- !u!54 &1615727135
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1615727133}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!135 &1615727136
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1615727133}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.8212212
-  m_Center: {x: -0.00000047683716, y: -0.0000000029740608, z: 1.5966866}
---- !u!114 &1615727137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1615727133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbee33b62a61ac2419ae16a05059c817, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 2
-  minScale: {x: 0.05, y: 0.05, z: 0.05}
-  maxScale: {x: 0.2, y: 0.2, z: 0.2}
-  magnetStartDistance: 0.22
-  magnetStopDistance: 0.1
-  movementSmoothing: 1
 --- !u!1001 &1711631623
 Prefab:
   m_ObjectHideFlags: 0
@@ -1321,34 +1259,6 @@ Prefab:
     - target: {fileID: 463644, guid: d692895c3470089448f361cfee412c5e, type: 2}
       propertyPath: m_RootOrder
       value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 463644, guid: d692895c3470089448f361cfee412c5e, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.86700004
-      objectReference: {fileID: 0}
-    - target: {fileID: 463644, guid: d692895c3470089448f361cfee412c5e, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 463644, guid: d692895c3470089448f361cfee412c5e, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 463644, guid: d692895c3470089448f361cfee412c5e, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 463644, guid: d692895c3470089448f361cfee412c5e, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 101.842
-      objectReference: {fileID: 0}
-    - target: {fileID: 463644, guid: d692895c3470089448f361cfee412c5e, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -3.9570003
-      objectReference: {fileID: 0}
-    - target: {fileID: 163550, guid: d692895c3470089448f361cfee412c5e, type: 2}
-      propertyPath: m_TagString
-      value: DynamicObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d692895c3470089448f361cfee412c5e, type: 2}

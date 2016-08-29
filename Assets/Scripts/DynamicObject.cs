@@ -11,6 +11,7 @@ public class DynamicObject : MonoBehaviour
     public float magnetStartDistance;
     public float magnetStopDistance;
     public float movementSmoothing;
+	public GameObject motionEffect;
 
     private Vector3 objectOrigin;
     private int wayPointIndex;
@@ -20,6 +21,7 @@ public class DynamicObject : MonoBehaviour
     private Transform indexFinger;
     private bool enableMovement = true;
     private Animation anim;
+
 
     void Start()
     {
@@ -119,7 +121,7 @@ public class DynamicObject : MonoBehaviour
     {
         if (anim != null && !anim.isPlaying)
         {
-            //anim.Play();
+			motionEffect.SetActive (true);
         }
     }
 
@@ -127,7 +129,7 @@ public class DynamicObject : MonoBehaviour
     {
         if (anim != null && anim.isPlaying)
         {
-            //anim.Stop();
+			motionEffect.SetActive (false);
         }
     }
 
