@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using NUnit.Framework;
+using Assets.Scripts.src;
 
 namespace Assets.Scripts.test
 {
-    using System;
-    using NUnit.Framework;
-    using Assets.Scripts.src;
 
     [TestFixture]
     class ASimpleClassTest
