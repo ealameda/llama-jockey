@@ -4,7 +4,7 @@ using System.Collections;
 [RequireComponent(typeof(AudioSource))]
 public class SoundManager : Photon.MonoBehaviour 
 {
-    public AudioClip waypintFX;
+    public AudioClip waypointFX;
     public AudioClip dynamicObjectFX;
     public AudioSource fxAudioSource;
     
@@ -45,7 +45,7 @@ public class SoundManager : Photon.MonoBehaviour
 
     void PlayDynamicObjectMovingFX()
     {
-        if (fxAudioSource != null && dynamicObjectFX != null)
+        if (fxAudioSource != null && dynamicObjectFX != null && !fxAudioSource.isPlaying)
         {
             fxAudioSource.clip = dynamicObjectFX;
             fxAudioSource.Play();
@@ -55,17 +55,17 @@ public class SoundManager : Photon.MonoBehaviour
     void PlayEditingWaypointFX()
     {
         editingWaypoint = !editingWaypoint;
-        if (fxAudioSource != null && waypintFX != null && !editingWaypoint)
+        if (fxAudioSource != null && waypointFX != null && !editingWaypoint)
         {
-            fxAudioSource.PlayOneShot(waypintFX);
+            fxAudioSource.PlayOneShot(waypointFX);
         }
     }
 
     void PlayAddWaypointFX()
     {
-        if (fxAudioSource != null && waypintFX != null && !editingWaypoint)
+        if (fxAudioSource != null && waypointFX != null)
         {
-            fxAudioSource.PlayOneShot(waypintFX);
+            fxAudioSource.PlayOneShot(waypointFX);
         }
     }
 
