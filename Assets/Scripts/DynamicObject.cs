@@ -119,7 +119,7 @@ public class DynamicObject : MonoBehaviour
 
     void PlayAnimation()
     {
-        if (anim != null && !anim.isPlaying)
+        if (motionEffect != null && !motionEffect.GetActive())
         {
 			motionEffect.SetActive (true);
         }
@@ -127,7 +127,7 @@ public class DynamicObject : MonoBehaviour
 
     void StopAnimation()
     {
-        if (anim != null && anim.isPlaying)
+        if (motionEffect != null && motionEffect.GetActive())
         {
 			motionEffect.SetActive (false);
         }
