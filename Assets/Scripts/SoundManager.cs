@@ -8,6 +8,7 @@ public class SoundManager : Photon.MonoBehaviour
     public AudioClip dynamicObjectMovingFX;
 
     private AudioSource audioSource;
+    private bool editingWaypoint = false;
 
     #region Singleton
     private static SoundManager instance;
@@ -54,7 +55,8 @@ public class SoundManager : Photon.MonoBehaviour
 
     void PlayEditingWaypoingFX()
     {
-        if (editingWaypointFX != null && !audioSource.isPlaying)
+        editingWaypoint = !editingWaypoint;
+        if (editingWaypointFX != null && !audioSource.isPlaying && editingWaypoint)
         {
             audioSource.clip = editingWaypointFX;
             audioSource.Play();
@@ -65,11 +67,13 @@ public class SoundManager : Photon.MonoBehaviour
     {
         EventManager.StartListening(EventName.DynamicObjectIntersectingPath, PlayDynamicObjectMovingFX);
         EventManager.StartListening(EventName.EditingWaypointOnOff, PlayEditingWaypoingFX);
+        EventManager.StartListening(EventName.WaypointAdded, PlayEditingWaypoingFX);
     }
 
     void OnDisable()
     {
         EventManager.StopListening(EventName.DynamicObjectIntersectingPath, PlayDynamicObjectMovingFX);
         EventManager.StopListening(EventName.EditingWaypointOnOff, PlayEditingWaypoingFX);
+        EventManager.StopListening(EventName.WaypointAdded, PlayEditingWaypoingFX);
     }
 }
