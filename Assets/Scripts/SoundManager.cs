@@ -45,6 +45,15 @@ public class SoundManager : Photon.MonoBehaviour
 
     void PlayDynamicObjectMovingFX()
     {
+        if (dynamicObjectMovingFX != null && !audioSource.isPlaying)
+        {
+            audioSource.clip = dynamicObjectMovingFX;
+            audioSource.Play();
+        }
+    }
+
+    void PlayEditingWaypoingFX()
+    {
         if (editingWaypointFX != null && !audioSource.isPlaying)
         {
             audioSource.clip = editingWaypointFX;
@@ -55,10 +64,12 @@ public class SoundManager : Photon.MonoBehaviour
     void OnEnable()
     {
         EventManager.StartListening(EventName.DynamicObjectIntersectingPath, PlayDynamicObjectMovingFX);
+        EventManager.StartListening(EventName.EditingWaypointOnOff, PlayEditingWaypoingFX);
     }
 
     void OnDisable()
     {
         EventManager.StopListening(EventName.DynamicObjectIntersectingPath, PlayDynamicObjectMovingFX);
+        EventManager.StopListening(EventName.EditingWaypointOnOff, PlayEditingWaypoingFX);
     }
 }
