@@ -63,6 +63,7 @@ public class SoundManager : Photon.MonoBehaviour
 
     void PlayAddWaypointFX()
     {
+		Debug.Log ("trying to play add waypoint");
         if (fxAudioSource != null && waypointFX != null)
         {
             fxAudioSource.PlayOneShot(waypointFX);

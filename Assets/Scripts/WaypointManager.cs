@@ -141,6 +141,7 @@ public class WaypointManager : Photon.MonoBehaviour
         }
         GameObject waypoint = (GameObject)Instantiate(waypointIndicatorPrefab, waypointPosition, Quaternion.identity);
         waypoints.Add(waypoint);
+	EventManager.TriggerEvent(EventName.WaypointAdded);
         pathLineRenderer.SetVertexCount(waypoints.Count);
         pathLineRenderer.SetPosition(waypoints.Count - 1, waypointPosition);
         readyToSetWaypointToggle = false;
