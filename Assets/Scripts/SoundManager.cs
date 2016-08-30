@@ -1,8 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(AudioSource))]
 public class SoundManager : Photon.MonoBehaviour 
 {
+    public AudioClip editingWaypointFX;
+    public AudioClip dynamicObjectMovingFX;
+
+    private AudioSource audioSource;
+
     #region Singleton
     private static SoundManager instance;
     public static SoundManager Instance
@@ -34,13 +40,25 @@ public class SoundManager : Photon.MonoBehaviour
     void Awake()
     {
         Init();
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    void PlayDynamicObjectMovingFX()
+    {
+        if (editingWaypointFX != null && !audioSource.isPlaying)
+        {
+            audioSource.clip = editingWaypointFX;
+            audioSource.Play();
+        }
     }
 
     void OnEnable()
     {
+        EventManager.StartListening(EventName.DynamicObjectIntersectingPath, PlayDynamicObjectMovingFX);
     }
 
     void OnDisable()
     {
+        EventManager.StopListening(EventName.DynamicObjectIntersectingPath, PlayDynamicObjectMovingFX);
     }
 }
