@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Assets.Scripts.src
 {
-    class ASimpleClass
+    public class ASimpleClass
     {
         public int addTwo(int addend)
         {
