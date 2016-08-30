@@ -4,10 +4,10 @@ using System.Collections;
 [RequireComponent(typeof(AudioSource))]
 public class SoundManager : Photon.MonoBehaviour 
 {
-    public AudioSource editingWaypointFX;
-    public AudioSource dynamicObjectMovingFX;
-
-    private AudioSource audioSource;
+    public AudioClip waypintFX;
+    public AudioClip dynamicObjectFX;
+    public AudioSource fxAudioSource;
+    
     private bool editingWaypoint = false;
 
     #region Singleton
@@ -41,37 +41,55 @@ public class SoundManager : Photon.MonoBehaviour
     void Awake()
     {
         Init();
-        audioSource = GetComponent<AudioSource>();
     }
 
     void PlayDynamicObjectMovingFX()
     {
-        if (dynamicObjectMovingFX != null && !dynamicObjectMovingFX.isPlaying)
+        if (fxAudioSource != null && dynamicObjectFX != null)
         {
-            dynamicObjectMovingFX.Play();
+            fxAudioSource.clip = dynamicObjectFX;
+            fxAudioSource.Play();
         }
     }
 
-    void PlayEditingWaypoingFX()
+    void PlayEditingWaypointFX()
     {
         editingWaypoint = !editingWaypoint;
-        if (editingWaypointFX != null && !editingWaypointFX.isPlaying && !editingWaypoint)
+        if (fxAudioSource != null && waypintFX != null && !editingWaypoint)
         {
-            editingWaypointFX.Play();
+            fxAudioSource.PlayOneShot(waypintFX);
+        }
+    }
+
+    void PlayAddWaypointFX()
+    {
+        if (fxAudioSource != null && waypintFX != null && !editingWaypoint)
+        {
+            fxAudioSource.PlayOneShot(waypintFX);
+        }
+    }
+
+    void StopDynamicObjectMovingFX()
+    {
+        if (fxAudioSource != null && dynamicObjectFX != null)
+        {
+            fxAudioSource.Stop();
         }
     }
 
     void OnEnable()
     {
         EventManager.StartListening(EventName.DynamicObjectIntersectingPath, PlayDynamicObjectMovingFX);
-        EventManager.StartListening(EventName.EditingWaypointOnOff, PlayEditingWaypoingFX);
-        EventManager.StartListening(EventName.WaypointAdded, PlayEditingWaypoingFX);
+        EventManager.StartListening(EventName.DynamicObjectOffPath, StopDynamicObjectMovingFX);
+        EventManager.StartListening(EventName.EditingWaypointOnOff, PlayEditingWaypointFX);
+        EventManager.StartListening(EventName.WaypointAdded, PlayAddWaypointFX);
     }
 
     void OnDisable()
     {
         EventManager.StopListening(EventName.DynamicObjectIntersectingPath, PlayDynamicObjectMovingFX);
-        EventManager.StopListening(EventName.EditingWaypointOnOff, PlayEditingWaypoingFX);
-        EventManager.StopListening(EventName.WaypointAdded, PlayEditingWaypoingFX);
+        EventManager.StopListening(EventName.DynamicObjectOffPath, StopDynamicObjectMovingFX);
+        EventManager.StopListening(EventName.EditingWaypointOnOff, PlayEditingWaypointFX);
+        EventManager.StopListening(EventName.WaypointAdded, PlayAddWaypointFX);
     }
 }
