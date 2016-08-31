@@ -8,6 +8,7 @@ public class WaypointManager : Photon.MonoBehaviour
     public GameObject dynamicObjectGameObject;
     public GameObject waypointIndicatorPrefab;
     public GameObject pathPrefab;
+    public GameObject waypointAddedPrefab;
 	public Material pathInertMaterial;
 	public Material pathActiveMaterial;
     #endregion
@@ -142,8 +143,9 @@ public class WaypointManager : Photon.MonoBehaviour
             waypoints = new List<GameObject>();
         }
         GameObject waypoint = (GameObject)Instantiate(waypointIndicatorPrefab, waypointPosition, Quaternion.identity);
+        Instantiate(waypointAddedPrefab, waypointPosition, Quaternion.identity);
         waypoints.Add(waypoint);
-	EventManager.TriggerEvent(EventName.WaypointAdded);
+	    EventManager.TriggerEvent(EventName.WaypointAdded);
         pathLineRenderer.SetVertexCount(waypoints.Count);
         pathLineRenderer.SetPosition(waypoints.Count - 1, waypointPosition);
         readyToSetWaypointToggle = false;

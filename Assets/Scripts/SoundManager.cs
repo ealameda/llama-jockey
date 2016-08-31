@@ -6,6 +6,7 @@ public class SoundManager : Photon.MonoBehaviour
 {
     public AudioClip waypointFX;
     public AudioClip dynamicObjectFX;
+    public AudioClip editingOrAddingWaypointFX;
     public AudioSource fxAudioSource;
     
     private bool editingWaypoint = false;
@@ -57,7 +58,12 @@ public class SoundManager : Photon.MonoBehaviour
         editingWaypoint = !editingWaypoint;
         if (fxAudioSource != null && waypointFX != null && !editingWaypoint)
         {
+            fxAudioSource.Stop();
             fxAudioSource.PlayOneShot(waypointFX);
+        }
+        else if (fxAudioSource != null && waypointFX != null && editingWaypoint)
+        {
+            PlayWaypointAddingEditingFX();
         }
     }
 
@@ -66,6 +72,7 @@ public class SoundManager : Photon.MonoBehaviour
 		Debug.Log ("trying to play add waypoint");
         if (fxAudioSource != null && waypointFX != null)
         {
+            fxAudioSource.Stop();
             fxAudioSource.PlayOneShot(waypointFX);
         }
     }
@@ -78,12 +85,22 @@ public class SoundManager : Photon.MonoBehaviour
         }
     }
 
+    void PlayWaypointAddingEditingFX()
+    {
+        if (fxAudioSource != null && editingOrAddingWaypointFX != null)
+        {
+            fxAudioSource.clip = editingOrAddingWaypointFX;
+            fxAudioSource.Play();
+        } 
+    }
+
     void OnEnable()
     {
         EventManager.StartListening(EventName.DynamicObjectIntersectingPath, PlayDynamicObjectMovingFX);
         EventManager.StartListening(EventName.DynamicObjectOffPath, StopDynamicObjectMovingFX);
         EventManager.StartListening(EventName.EditingWaypointOnOff, PlayEditingWaypointFX);
         EventManager.StartListening(EventName.WaypointAdded, PlayAddWaypointFX);
+        EventManager.StartListening(EventName.ReadyToSetWaypoint, PlayWaypointAddingEditingFX);
     }
 
     void OnDisable()
@@ -92,5 +109,6 @@ public class SoundManager : Photon.MonoBehaviour
         EventManager.StopListening(EventName.DynamicObjectOffPath, StopDynamicObjectMovingFX);
         EventManager.StopListening(EventName.EditingWaypointOnOff, PlayEditingWaypointFX);
         EventManager.StopListening(EventName.WaypointAdded, PlayAddWaypointFX);
+        EventManager.StartListening(EventName.ReadyToSetWaypoint, PlayWaypointAddingEditingFX);
     }
 }

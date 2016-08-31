@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityStandardAssets.ImageEffects;
 
 public class DynamicObject : MonoBehaviour
 {
@@ -11,7 +13,8 @@ public class DynamicObject : MonoBehaviour
     public float magnetStartDistance;
     public float magnetStopDistance;
     public float movementSmoothing;
-	public GameObject motionEffect;
+    public GameObject motionEffect;
+    public float glowPowerUpTime;
 
     private Vector3 objectOrigin;
     private int wayPointIndex;
@@ -21,6 +24,12 @@ public class DynamicObject : MonoBehaviour
     private Transform indexFinger;
     private bool enableMovement = true;
     private Animation anim;
+    private float glowStartTime = 0.0f;
+    private float unglowStartTime = 0.0f;
+    private Color baseMaterialColor;
+    private Material glowMat;
+    private bool growCRStarted = false;
+    private AudioSource audioSource;
 
 
     void Start()
@@ -28,13 +37,16 @@ public class DynamicObject : MonoBehaviour
         wayPointIndex = 0;
         anim = transform.GetComponent<Animation>();
         objectOrigin = transform.position;
+        glowMat = GetComponent<MeshRenderer>().material;
+        baseMaterialColor = glowMat.color;
+        audioSource = GetComponent<AudioSource>();
     }
 
-    void Update ()
+    void Update()
     {
         // TODO: this will not work for 2 players nicely, we think......
         GameObject rightPinchDetector = GameObject.Find("PinchDetector_R");
-		// Object moving through waypoints
+        // Object moving through waypoints
         if (waypointPositions != null && waypointPositions.Count > 1 && enableMovement)
         {
             if (Vector3.Distance(transform.position, waypointPositions[wayPointIndex]) < 0.01f)
@@ -63,22 +75,39 @@ public class DynamicObject : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, waypointPositions[wayPointIndex], Time.deltaTime * movementSpeed);
             transform.LookAt(waypointPositions[wayPointIndex]);
         }
-		// Check to see if we magnetize
+        // Check to see if we magnetize
         else if (waypointPositions == null && rightPinchDetector != null)
         {
             float handToObjectDistance = Vector3.Distance(transform.position, rightPinchDetector.transform.position);
-			// see if the hand is in the magnetize sphere and the object hasn't left the distance of the sphere
-			if (handToObjectDistance < magnetStartDistance 
-				&& handToObjectDistance > magnetStopDistance 
-				&& Vector3.Distance(transform.position, objectOrigin) < magnetStartDistance)
+            // see if the hand is in the magnetize sphere and the object hasn't left the distance of the sphere
+            if (handToObjectDistance < magnetStartDistance
+                && Vector3.Distance(transform.position, objectOrigin) < magnetStartDistance)
             {
-                transform.position = Vector3.Lerp(transform.position, rightPinchDetector.transform.position, Time.deltaTime * movementSmoothing);
+
+                if (handToObjectDistance > magnetStopDistance)
+                {
+                    transform.position = Vector3.Lerp(transform.position, rightPinchDetector.transform.position,
+                        Time.deltaTime * movementSmoothing);
+                }
+
+                if (!growCRStarted)
+                {
+                    StopCoroutine(ChangeEmission(0.0f, false));
+                    StartCoroutine(ChangeEmission(Time.time, true));
+                }
             }
+            //hand leaves magnet field
             else if (handToObjectDistance > magnetStartDistance && transform.position != objectOrigin)
             {
                 transform.position = Vector3.Lerp(transform.position, objectOrigin, Time.deltaTime * movementSmoothing);
+                if (growCRStarted)
+                {
+                    StopCoroutine(ChangeEmission(0.0f, true));
+                    StartCoroutine(ChangeEmission(Time.time, false));
+                }
             }
         }
+        //todo: object was moved? think this is wrong
         else if (transform.position != objectOrigin)
         {
             transform.position = Vector3.Lerp(transform.position, objectOrigin, Time.deltaTime * movementSmoothing);
@@ -87,6 +116,31 @@ public class DynamicObject : MonoBehaviour
         {
             objectOrigin = transform.position;
         }
+    }
+
+    IEnumerator ChangeEmission(float startTime, bool glowingUp)
+    {
+        growCRStarted = glowingUp;
+        Debug.Log("Coroutine time: " + startTime);
+        int count = 3;
+        if (glowMat != null)
+        {
+            while (Time.time - startTime < glowPowerUpTime && count < 4)
+            {
+                if (glowingUp)
+                {
+                    glowMat.SetColor("_EmissionColor",
+                        Color.white * Mathf.Lerp(1.0f, 4.0f, (Time.time - startTime) / glowPowerUpTime));
+                }
+                else
+                {
+                    glowMat.SetColor("_EmissionColor",
+                        Color.white * Mathf.Lerp(4.0f, 1.0f, (Time.time - startTime) / glowPowerUpTime));
+                }
+                yield return null;
+            }
+        }
+        yield return null;
     }
 
     public void SetWaypointPositions(List<GameObject> waypoints)
@@ -122,7 +176,12 @@ public class DynamicObject : MonoBehaviour
     {
         if (motionEffect != null && !motionEffect.GetActive())
         {
-			motionEffect.SetActive (true);
+            motionEffect.SetActive(true);
+        }
+
+        if (audioSource != null && !audioSource.isPlaying)
+        {
+            audioSource.Play();
         }
     }
 
@@ -130,7 +189,12 @@ public class DynamicObject : MonoBehaviour
     {
         if (motionEffect != null && motionEffect.GetActive())
         {
-			motionEffect.SetActive (false);
+            motionEffect.SetActive(false);
+        }
+
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Stop();
         }
     }
 
@@ -146,7 +210,7 @@ public class DynamicObject : MonoBehaviour
     {
         EventManager.StopListening(EventName.DynamicObjectGrabbed, ToggleIntersectingObject);
         EventManager.StopListening(EventName.EditingWaypointOnOff, PauseMovement);
-        EventManager.StopListening(EventName.DynamicObjectIntersectingPath, PlayAnimation);             
+        EventManager.StopListening(EventName.DynamicObjectIntersectingPath, PlayAnimation);
         EventManager.StopListening(EventName.DynamicObjectOffPath, StopAnimation);
     }
 }

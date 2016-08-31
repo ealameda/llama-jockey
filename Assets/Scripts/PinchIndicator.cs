@@ -70,6 +70,7 @@ public class PinchIndicator : MonoBehaviour
             Debug.Log("unpinched a waypoint");
             grabbedWaypoint = null;
             EventManager.TriggerEvent(EventName.EditingWaypointOnOff);
+            Instantiate(Resources.Load("WaypointAddedAnimation"), transform.position, Quaternion.identity);
         }
     }
 
