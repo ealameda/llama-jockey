@@ -8,6 +8,8 @@ public class WaypointManager : Photon.MonoBehaviour
     public GameObject dynamicObjectGameObject;
     public GameObject waypointIndicatorPrefab;
     public GameObject pathPrefab;
+	public Material pathInertMaterial;
+	public Material pathActiveMaterial;
     #endregion
 
     #region Private Variables
@@ -164,6 +166,9 @@ public class WaypointManager : Photon.MonoBehaviour
             EventManager.TriggerEvent(EventName.DynamicObjectOffPath);
         }
         dynamicObjectGrabbed = false;
+		{
+			pathLineRenderer.material = pathInertMaterial;
+		}
     }
 
     DynamicObject CheckIfObjectIntersectingPath()
@@ -177,8 +182,8 @@ public class WaypointManager : Photon.MonoBehaviour
                 Vector3 start = waypoints[i].transform.position;
                 Vector3 end = waypoints[i + 1].transform.position;
 
-                waypoints[i].transform.GetComponent<MeshRenderer>().material.color = Color.red;
-                waypoints[i + 1].transform.GetComponent<MeshRenderer>().material.color = Color.red;
+                //waypoints[i].transform.GetComponent<MeshRenderer>().material.color = Color.red;
+                //waypoints[i + 1].transform.GetComponent<MeshRenderer>().material.color = Color.red;
 
                 float distance = Vector3.Distance(start, end);
 
@@ -202,6 +207,10 @@ public class WaypointManager : Photon.MonoBehaviour
     void DynamicObjectIsGrabbed()
     {
         dynamicObjectGrabbed = true;
+		if (pathLineRenderer != null) 
+		{
+			pathLineRenderer.material = pathActiveMaterial;
+		}
     }
 
     [PunRPC]

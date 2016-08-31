@@ -53,7 +53,7 @@ LineRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9fa7821d1d7282f4ab6968066d1c342d, type: 2}
+  - {fileID: 2100000, guid: 6c042be38ee4cc64ca4b59c9d2cef4cf, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}

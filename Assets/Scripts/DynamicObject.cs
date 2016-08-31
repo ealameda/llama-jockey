@@ -34,6 +34,7 @@ public class DynamicObject : MonoBehaviour
     {
         // TODO: this will not work for 2 players nicely, we think......
         GameObject rightPinchDetector = GameObject.Find("PinchDetector_R");
+		// Object moving through waypoints
         if (waypointPositions != null && waypointPositions.Count > 1 && enableMovement)
         {
             if (Vector3.Distance(transform.position, waypointPositions[wayPointIndex]) < 0.01f)
@@ -62,20 +63,20 @@ public class DynamicObject : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, waypointPositions[wayPointIndex], Time.deltaTime * movementSpeed);
             transform.LookAt(waypointPositions[wayPointIndex]);
         }
+		// Check to see if we magnetize
         else if (waypointPositions == null && rightPinchDetector != null)
         {
             float handToObjectDistance = Vector3.Distance(transform.position, rightPinchDetector.transform.position);
-            if (handToObjectDistance < magnetStartDistance && handToObjectDistance > magnetStopDistance)
+			// see if the hand is in the magnetize sphere and the object hasn't left the distance of the sphere
+			if (handToObjectDistance < magnetStartDistance 
+				&& handToObjectDistance > magnetStopDistance 
+				&& Vector3.Distance(transform.position, objectOrigin) < magnetStartDistance)
             {
                 transform.position = Vector3.Lerp(transform.position, rightPinchDetector.transform.position, Time.deltaTime * movementSmoothing);
             }
             else if (handToObjectDistance > magnetStartDistance && transform.position != objectOrigin)
             {
                 transform.position = Vector3.Lerp(transform.position, objectOrigin, Time.deltaTime * movementSmoothing);
-            }
-            else
-            {
-                objectOrigin = transform.position;
             }
         }
         else if (transform.position != objectOrigin)
