@@ -14,7 +14,7 @@ public class StatePatternDynamicObject : MonoBehaviour
 
 
 
-    void Awake()
+    public void Awake()
     {
         unmagnetizedState = new UnmagnetizedState(this, magnetStartDistance);
         magnetizedState = new MagnetizedState(this);
