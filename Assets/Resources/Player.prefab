@@ -6149,8 +6149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 834e7e9d0581e4140976a91b564863c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPrimary: {fileID: 107156, guid: 41c5227f1a900444e8b07a5c98b9908c, type: 2}
-  effectSecondary: {fileID: 130104, guid: d6b2c8e7f181c0a42880ae00cb66e461, type: 2}
+  effectPrimary: {fileID: 0}
+  effectSecondary: {fileID: 0}
 --- !u!114 &114000010656583190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6382,8 +6382,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 834e7e9d0581e4140976a91b564863c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectPrimary: {fileID: 107156, guid: 41c5227f1a900444e8b07a5c98b9908c, type: 2}
-  effectSecondary: {fileID: 130104, guid: d6b2c8e7f181c0a42880ae00cb66e461, type: 2}
+  effectPrimary: {fileID: 0}
+  effectSecondary: {fileID: 0}
 --- !u!114 &114000010920393768
 MonoBehaviour:
   m_ObjectHideFlags: 1

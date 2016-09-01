@@ -3787,8 +3787,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   _handModel: {fileID: 114000013433889616}
-  _activatePinchDist: 0.03
-  _deactivatePinchDist: 0.04
+  _activatePinchDist: 0.02
+  _deactivatePinchDist: 0.03
   pinchTool: {fileID: 1000013257345814}
 --- !u!114 &114000013433889616
 MonoBehaviour:
