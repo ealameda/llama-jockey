@@ -23,6 +23,7 @@ GameObject:
   - 23: {fileID: 23000012002748320}
   - 65: {fileID: 65000010219735174}
   - 54: {fileID: 54000012102430584}
+  - 114: {fileID: 114000010976051520}
   m_Layer: 0
   m_Name: WaypointIndicator
   m_TagString: Waypoint
@@ -106,3 +107,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114000010976051520
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013465777730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1acb98bcfa9af5241b91899dd8a5bbc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxScale: 0.05
+  growStartDistance: 0.2
