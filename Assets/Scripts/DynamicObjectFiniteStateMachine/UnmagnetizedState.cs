@@ -3,35 +3,30 @@ using System.Collections;
 
 public class UnmagnetizedState : IDynamicObjectState
 {
-    private readonly StatePatternDynamicObject dynamicObject;
+    private readonly DynamicObjectStatePatternManager statePatternManager;
     private float magnetStartDistance;
 
-    public UnmagnetizedState(StatePatternDynamicObject dynamicObject, float magnetStartDistance)
+    public UnmagnetizedState(DynamicObjectStatePatternManager statePatternManager, float magnetStartDistance)
     {
-        this.dynamicObject = dynamicObject;
+        this.statePatternManager = statePatternManager;
         this.magnetStartDistance = magnetStartDistance;
     }
 
-    public void ToMagnetizedState()
+    private void ToMagnetizedState()
     {
-        dynamicObject.currentState = dynamicObject.magnetizedState;
+        statePatternManager.currentState = statePatternManager.magnetizedState;
     }
-    public void ToUnmagnetizedState()
+    private void ToUnmagnetizedState()
     {
         Debug.LogError("Cannot move from Unmagnetized State to Unmagnetized State");
     }
-    public void ToGrabbedState() { }
-    public void ToUngrabbedState() { }
-    public void ToIntertOnPathState() { }
-    public void ToMovingOnPathState() { }
-    public void ToPausedOnPathState() { }
     public void OnEnable() { }
     public void OnDisable() { }
     public void UpdateState()
     {
         Transform rightPinchDetector = GameObject.Find("PinchDetector_R").transform;
         if (rightPinchDetector != null
-            && IsInProximity(rightPinchDetector.position, dynamicObject.transform.position, magnetStartDistance))
+            && IsInProximity(rightPinchDetector.position, statePatternManager.transform.position, magnetStartDistance))
         {
             ToMagnetizedState();
         }

@@ -6,19 +6,19 @@ using System.Linq;
 using System.Text;
 //using System.Threading.Tasks;
 
-namespace NUnit.Tests1
+namespace NUnit.Tests
 {
     [TestFixture]
     class StatePatternDynamicObjectTest
     {
         private UnmagnetizedState unmagnetizedState;
         private MagnetizedState magnetizedState;
-        private StatePatternDynamicObject statePatternDyamicObject;
+        private DynamicObjectStatePatternManager statePatternDyamicObject;
 
         [SetUp]
-        void SetUp()
+        public void SetUp()
         {
-            statePatternDyamicObject = new StatePatternDynamicObject();
+            statePatternDyamicObject = new DynamicObjectStatePatternManager();
             statePatternDyamicObject.Awake();
         }
 
@@ -31,18 +31,5 @@ namespace NUnit.Tests1
             unmagnetizedState.ToMagnetizedState();
             Assert.IsInstanceOf(typeof(MagnetizedState), statePatternDyamicObject.currentState);
         }
-
-        [Test]
-        public void ShouldNotGoToUnmagnetizedFromUnmagnetized() {
-            float magnetStartDistance = 5.0f;
-            unmagnetizedState = new UnmagnetizedState(statePatternDyamicObject, magnetStartDistance);
-
-            unmagnetizedState.ToUnmagnetizedState();
-            Assert.IsInstanceOf(typeof(MagnetizedState), statePatternDyamicObject.currentState);
-        }
-
-        //this will go in a different test class testing unmagnetized logic at unit level
-        // make new Right pinch detector named "PinchDetector_R" and set it's posistion
-        //unmagnatizedState = new UnmagnetizedState();
     }
 }

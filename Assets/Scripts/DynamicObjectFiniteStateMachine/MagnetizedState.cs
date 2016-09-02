@@ -3,9 +3,9 @@ using System.Collections;
 
 public class MagnetizedState : IDynamicObjectState
 {
-    private readonly StatePatternDynamicObject dynamicObject;
+    private readonly DynamicObjectStatePatternManager dynamicObject;
 
-    public MagnetizedState(StatePatternDynamicObject dynamicObject)
+    public MagnetizedState(DynamicObjectStatePatternManager dynamicObject)
     {
         this.dynamicObject = dynamicObject;
     }
