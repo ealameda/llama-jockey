@@ -15,15 +15,15 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 7
   m_Fog: 1
-  m_FogColor: {r: 0.45098042, g: 0.8705883, b: 1, a: 1}
+  m_FogColor: {r: 0.5568628, g: 0.9725491, b: 1, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.012
+  m_FogDensity: 0.03
   m_LinearFogStart: 19
   m_LinearFogEnd: 333.25
-  m_AmbientSkyColor: {r: 0.32352942, g: 0.32352942, b: 0.32352942, a: 1}
+  m_AmbientSkyColor: {r: 0.64705884, g: 0.64705884, b: 0.64705884, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1.19
+  m_AmbientIntensity: 1.6
   m_AmbientMode: 3
   m_SkyboxMaterial: {fileID: 2100000, guid: d861bf9489b89fd4da4a7719cb2e07d5, type: 2}
   m_HaloStrength: 0.5
@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.68
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1878660274}
-  m_IndirectSpecularColor: {r: 0.2583302, g: 0.5542552, b: 0.76450145, a: 0.68}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0.68}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1901,7 +1901,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: f19c9246d91b3d5488c65e0539de4da2, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.399
+      value: 1.493
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f19c9246d91b3d5488c65e0539de4da2, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1909,7 +1909,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f19c9246d91b3d5488c65e0539de4da2, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 1.299
+      value: 2.682
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f19c9246d91b3d5488c65e0539de4da2, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2772,6 +2772,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -180
       objectReference: {fileID: 0}
+    - target: {fileID: 2314218, guid: ea6f376a83e31a046a63dbc537deef06, type: 2}
+      propertyPath: m_LightProbeUsage
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea6f376a83e31a046a63dbc537deef06, type: 2}
   m_IsPrefabParent: 0
@@ -3402,15 +3406,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000010645218758, guid: f2155c9ddf8c2a947b6958c9879a3baf, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.042
+      value: 0.99
       objectReference: {fileID: 0}
     - target: {fileID: 4000010645218758, guid: f2155c9ddf8c2a947b6958c9879a3baf, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.196
+      value: 0.821
       objectReference: {fileID: 0}
     - target: {fileID: 4000010645218758, guid: f2155c9ddf8c2a947b6958c9879a3baf, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -3.958
+      value: -0.67
       objectReference: {fileID: 0}
     - target: {fileID: 4000010645218758, guid: f2155c9ddf8c2a947b6958c9879a3baf, type: 2}
       propertyPath: m_LocalRotation.x
@@ -3625,7 +3629,7 @@ Light:
   serializedVersion: 7
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.25
+  m_Intensity: 1.27
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -3646,7 +3650,7 @@ Light:
     m_Bits: 4294967295
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1.4
+  m_BounceIntensity: 2.17
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &1878660275
@@ -3655,10 +3659,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1878660273}
-  m_LocalRotation: {x: 0.018674588, y: -0.9660716, z: 0.25304165, w: -0.04823777}
+  m_LocalRotation: {x: -0.08085479, y: -0.75730366, z: 0.6470386, w: -0.035984423}
   m_LocalPosition: {x: -0.033356775, y: 1.7252868, z: -0.85430425}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 29.132002, y: -186.564, z: -3.8580003}
+  m_LocalEulerAnglesHint: {x: 80.319, y: -162.92001, z: 26.793001}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
