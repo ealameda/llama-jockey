@@ -13,12 +13,14 @@ namespace NUnit.Tests
     {
         private UnmagnetizedState unmagnetizedState;
         private MagnetizedState magnetizedState;
-        private DynamicObjectStatePatternManager statePatternDyamicObject;
+        private DynamicObjectStateManager statePatternDyamicObject;
+        private DynamicObject dynamicObject;
 
         [SetUp]
         public void SetUp()
         {
-            statePatternDyamicObject = new DynamicObjectStatePatternManager();
+            dynamicObject = new DynamicObject();
+            statePatternDyamicObject = new DynamicObjectStateManager();
             statePatternDyamicObject.Awake();
         }
 

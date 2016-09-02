@@ -1,35 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Stateless;
+using Assets.Scripts.DynamicObjectFiniteStateMachine;
 
-public class UnmagnetizedState : IDynamicObjectState
+public class UnmagnetizedState : State
 {
-    private readonly DynamicObjectStatePatternManager statePatternManager;
+    private readonly DynamicObjectStateManager stateMachine;
     private float magnetStartDistance;
 
-    public UnmagnetizedState(DynamicObjectStatePatternManager statePatternManager, float magnetStartDistance)
+    public UnmagnetizedState(float magnetStartDistance, StateMachine)
     {
-        this.statePatternManager = statePatternManager;
         this.magnetStartDistance = magnetStartDistance;
     }
 
-    private void ToMagnetizedState()
-    {
-        statePatternManager.currentState = statePatternManager.magnetizedState;
-    }
-    private void ToUnmagnetizedState()
-    {
-        Debug.LogError("Cannot move from Unmagnetized State to Unmagnetized State");
-    }
     public void OnEnable() { }
     public void OnDisable() { }
     public void UpdateState()
     {
         Transform rightPinchDetector = GameObject.Find("PinchDetector_R").transform;
         if (rightPinchDetector != null
-            && IsInProximity(rightPinchDetector.position, statePatternManager.transform.position, magnetStartDistance))
+            && IsInProximity(rightPinchDetector.position, stateMachine.transform.position, magnetStartDistance))
         {
             ToMagnetizedState();
         }
+    }
+
+    private void ToMagnetizedState()
+    {
+        stateMachine.Fire(Trigger.InProximity);
     }
 
     private bool IsInProximity(Vector3 handPosition, Vector3 dynamicObjectPosition, float distance)

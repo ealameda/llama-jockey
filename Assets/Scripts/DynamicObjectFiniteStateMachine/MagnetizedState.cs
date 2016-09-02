@@ -1,25 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts.DynamicObjectFiniteStateMachine;
 
-public class MagnetizedState : IDynamicObjectState
+public class MagnetizedState : State
 {
-    private readonly DynamicObjectStatePatternManager dynamicObject;
+    private readonly DynamicObjectStateManager stateMachine;
+    private float magnetStartDistance;
 
-    public MagnetizedState(DynamicObjectStatePatternManager dynamicObject)
-    {
-        this.dynamicObject = dynamicObject;
-    }
-
-    public void ToMagnetizedState() { }
-    public void ToUnmagnetizedState()
-    {
-        dynamicObject.currentState = dynamicObject.unmagnetizedState;
-    }
-    public void ToGrabbedState() { }
-    public void ToUngrabbedState() { }
-    public void ToIntertOnPathState() { }
-    public void ToMovingOnPathState() { }
-    public void ToPausedOnPathState() { }
+    public MagnetizedState() { }
     public void OnEnable() { }
     public void OnDisable() { }
     public void UpdateState() { }
